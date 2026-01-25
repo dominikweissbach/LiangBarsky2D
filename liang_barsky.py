@@ -33,5 +33,10 @@ def liang_barsky_clip(p_start, p_end, x_min, y_min, x_max, y_max):
     end_clipped = p_start + t_exit_within_box * jnp.array([dx, dy])
     return start_clipped, end_clipped, valid
 
+def liang_barsky_clip_batch(p_starts, p_ends, x_min, y_min, x_max, y_max):
+    # Vectorized version of liang_barsky_clip for batches of lines
+    # p_starts, p_ends: shape (N, 2) arrays representing N start and end points of lines
+    return vmap(liang_barsky_clip, in_axes=(0, 0, None, None, None, None))(
+        p_starts, p_ends, x_min, y_min, x_max, y_max)
 
 

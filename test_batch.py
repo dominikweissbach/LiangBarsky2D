@@ -8,6 +8,13 @@ number_of_lines = 100
 start_points = np.random.rand(number_of_lines, 2) * 3 - 1
 end_points = np.random.rand(number_of_lines, 2) * 3 - 1
 
+# Adding exact parallel missed line to the test batch
+start_points[0,:] = jnp.array([-1.0, 1.5])
+end_points[0,:] = jnp.array([2.0, 1.5000000])
+# Adding exact parallel hit line to the test batch
+start_points[1,:] = jnp.array([-1.0, 0.5])
+end_points[1,:] = jnp.array([2.0, 0.5])
+
 x_min, y_min, x_max, y_max = 0.0, 0.0, 1.0, 1.0
 start, end, valid = liang_barsky_clip_batch(start_points, end_points, x_min, y_min, x_max, y_max)
 

@@ -19,7 +19,7 @@ elif test == "straight":
     p_end = jnp.array([2.0, 0.5])
 elif test == "parallel_missed":
     p_start = jnp.array([-1.0, 1.5])
-    p_end = jnp.array([2.0, 1.5])
+    p_end = jnp.array([2.0, 1.5000000])
 
 x_min, y_min, x_max, y_max = 0.0, 0.0, 1.0, 1.0
 start, end, valid = liang_barsky_clip(p_start, p_end, x_min, y_min, x_max, y_max)
